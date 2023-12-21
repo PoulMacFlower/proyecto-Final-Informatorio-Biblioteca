@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card h-50 bg-dark text-white card-project" >
+        <div class="card-header text-center">
+            <h1>Cerrar sesión</h1>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'usuarios:logout_user' %}?next={{next}}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{next}}">
+                <p class="text-center">¿su sesión esta activa?</p>
+                <div class="d-grid gap-2 mt-4">
+                    <button class="btn btn-danger btn-sm" type="submit">Cerrar sesión</button>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <a class="btn btn-secondary btn-sm" href="{{next}}">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

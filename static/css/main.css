@@ -1,0 +1,137 @@
+/* main.css */
+:root {
+  --primary: #d0ffdf;
+  --card-project:  #fafafa;
+  --bs-dark-rgb: -67, 20, 38;
+}
+
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+footer{
+  margin-top: auto;
+}
+
+
+
+.color-body {
+  background-color: var(--primary);
+}
+
+
+.card-project:hover {
+    border: 1px solid var(--card-project);
+    cursor: pointer;
+  }
+
+  /* Estilo para hacer la imagen de perfil circular */
+.profile-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+ /* ###################################*/
+
+  /* Estilos para el contenedor principal */
+.articles-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  justify-content: space-between;
+}
+ /* ###################################*/
+
+/* Estilos para el contenedor de la paginación */
+.pagination-container {
+  margin-top: 20px;
+}
+ /* ###################################*/
+
+/* Estilos para imagen de acerca-de */
+.hero-image {
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+ /* ###################################*/
+
+
+/* Efecto subrayado progresivo al pasar el cursor, por las secciones del nav */
+.underline-hover {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+ 
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color:  #791111;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s;
+}
+
+.underline-hover:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-center {
+  display: flex;
+  justify-content: center;
+}
+/* ###################################*/
+
+/*Profile colab*/
+
+.username {
+  font-size: 25px;
+  font-weight: bold;
+  margin: inherit;
+  padding: 3px;
+}
+
+.biography {
+  text-align: center;
+}
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-body-profile {
+  background-color: #c9d7b3;
+  padding: 10px;
+}
+
+/* ###################################*/
+
+/*Centrar todos los articulos*/
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-project {
+  margin: 10px;
+}
+/*################################*/
+
+/*Centrar la informacion al eliminar un articulo*/
+.vh-100 {
+  height: 68vh !important;
+}
+
+
