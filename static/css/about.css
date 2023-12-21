@@ -1,0 +1,59 @@
+body, html {
+  height: 100%;
+}
+
+.hero-image {
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.squarespace-cdn.com/content/v1/62bdc86f2c1ae2263bdd885e/1656604788832-AXKGFYRQC7EG9AUL4OL7/landing-full-topleft-01.jpg");
+
+height: 100vh;
+width: auto;
+
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+}
+
+.hero-text {
+text-align: center;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+}
+
+
+
+.programas img{
+width: 100%;
+max-width: 400px;
+height: auto;
+}
+
+
+.card {
+margin: 10px;
+padding: 16px;
+border-radius: 10px;
+box-shadow: 10px 8px 10px 5px gray;
+}
+
+
+
+.redes{
+display: flex;
+justify-content: space-around;
+margin: 5px;
+}
+
+.noticias{
+background-color: #d0ffdf;
+}
+
+
+.noticias img{
+width: 100%;
+max-width: 400px;
+height: auto;
+}
