@@ -1,0 +1,17 @@
+<!-- Mostrar enlaces de paginación -->
+<div class="pagination-container">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if categories_page.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo; Anterior</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ categories_page.previous_page_number }}">Anterior</a></li>
+            {% endif %}
+
+            {% if categories_page.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ categories_page.next_page_number }}">Siguiente</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ categories_page.paginator.num_pages }}">Última &raquo;</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+

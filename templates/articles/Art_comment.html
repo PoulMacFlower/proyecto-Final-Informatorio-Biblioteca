@@ -1,0 +1,63 @@
+{% load crispy_forms_tags %}
+
+<div class="card  bg-white text-black card-project" style="box-shadow: none;">
+    <div class="row d-flex align-items-baseline">
+        <div class="col-lg-6">
+            <div class="container text-center mt-4">
+
+                {% if user.is_authenticated %}
+                <div class="row justify-content-start">
+                    <div class="col-md-6">
+                        <h3 class="fs-5" class="mb-3">Deja un comentario:</h3>
+                        <div class="d-flex justify-content-start">
+                            <form method="post" class="form-inline justify-content-center">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+                                <div class="d-grid mt-2">
+                                    <button type="submit" class="btn btn-primary">Comentar</button>
+                                </div>
+                            </form>
+                        </div>
+                        {% else %}
+                        <div class="container text-center">
+                            <p class="mb-4"> <a href="{% url 'usuarios:login_user' %}"
+                                    class="btn btn-secondary btn-sm">Iniciar sesión</a> Haz un comentario!!!</p>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <h3 class="fs-5" class="mb-3 ">Comentarios:</h3>
+            <ul class="bg-white  list-unstyled  bg-white" style="max-height: 300px; overflow-y: auto;">
+                {% for comment in comments %}
+                <li class="mb-3">
+                    <div class="border p-3"> <!-- Caja para resaltar el contenido -->
+                        <img src="{{ comment.author.image.url }}" alt="{{ comment.author.username }}"
+                            class="rounded-circle" width="40" height="40"/>
+                        <p>
+                            <strong>{{ comment.author.username }}</strong> - {{ comment.created_at|date:"M d Y H:i"}}
+                        </p>
+                        {{ comment.content }}
+                        {% if user.is_authenticated %}
+                        {% if user.is_colaborador or user == comment.author %}
+                        <!-- Mostrar el botón de editar solo para el autor del comentario -->
+                        {% if user == comment.author %}
+                        <a href="{% url 'comentarios:update_comment' comment.id %}" class="btn btn-warning"> <i
+                                class="bi bi-pencil-fill"></i> </a>
+                        {% endif %}
+                        <!-- Mostrar el botón de eliminar para el autor del comentario y colaboradores -->
+                        <a href="{% url 'comentarios:delete_comment' comment.id %}" class="btn btn-danger"> <i
+                                class="bi bi-trash"></i> </a>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>

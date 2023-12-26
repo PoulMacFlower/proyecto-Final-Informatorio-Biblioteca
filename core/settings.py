@@ -35,6 +35,8 @@ INSTALLED_APPS = [
 
     'core',
     'apps.usuario',
+    'apps.categoria',
+    'apps.articulo',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
