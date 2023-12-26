@@ -1,0 +1,31 @@
+<form class="d-flex flex-wrap justify-content-center align-items-center my-3" method="get" action="{% url 'articulos:all_articles' %}">
+    {% csrf_token %}
+    <div class="input-group" style="max-width: 400px;"> <!-- Puedes ajustar el valor de max-width según tus necesidades -->
+        <input name="q" class="form-control" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-success me-2" type="submit">Buscar</button>
+    </div>
+    <div class="d-flex align-items-center">
+        <!-- Filtro por Categoría -->
+        <select name="category" class="form-select me-2" style="width: 150px;">
+            <option value="" selected>Categoría</option>    
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+        <!-- Filtro por Autor -->
+        <select name="author" class="form-select me-2">
+            <option value="" selected>Autor</option>
+            {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+</form>
+<div class="d-flex justify-content-center mb-3">
+    <div class="btn-group" role="group">
+        <a class="btn btn-sm btn-secondary btn-rounded" href="{% url 'articulos:all_articles' %}?sort_by=asc">Más antiguos</a>
+        <a class="btn btn-sm btn-secondary btn-rounded" href="{% url 'articulos:all_articles' %}?sort_by=desc">Más recientes</a>
+        <a class="btn btn-sm btn-secondary btn-rounded" href="{% url 'articulos:all_articles' %}?sort_by=alpha_asc">A-Z</a>
+        <a class="btn btn-sm btn-secondary btn-rounded" href="{% url 'articulos:all_articles' %}?sort_by=alpha_desc">Z-A</a>
+    </div>
+</div>

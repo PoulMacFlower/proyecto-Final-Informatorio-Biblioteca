@@ -1,0 +1,22 @@
+<div class="col mb-3"> 
+    <div class="card h-100 bg-dark text-white card-project" style="width: 18rem;">
+        <img src="{{ article.image.url }}" class="card-img-top" alt="{{ article.title }}" style="max-height: 150px; object-fit: cover;">
+        <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted text-center">{{ article.date_published|date:'M d Y' }}</h6>
+            <h2 class="fw-bold text-success fs-5 text-center">Título: {{ article.title }}</h2>
+            <p class="text-center">Escritor: <a href="{% url 'usuarios:author_detail' article.author.id %}" class="btn btn-outline-primary">{{ article.author.username }}</a></p>
+            <p class="text-white card-text text-center">{{ article.content|striptags|truncatechars:100 }}</p>
+            {% if user.is_authenticated %}
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                <a href="{% url 'articulos:detail_article' article.id %}" class="btn btn-success">Leer</a>
+                {% if user.is_colaborador %}
+                <a href="{% url 'articulos:update_article' article.id %}" class="boton-articulo btn btn-warning ms-2">Editar</a>
+                <a href="{% url 'articulos:delete_article' article.id %}" class="boton-articulo btn btn-danger ms-2">Eliminar</a>
+                {% endif %}
+            </div>
+            {% else %}
+            <a href="{% url 'articulos:detail_article' article.id %}" class="btn btn-success">Leer</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
