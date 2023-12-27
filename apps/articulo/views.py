@@ -185,5 +185,5 @@ class ArtUpdateView(LoginRequiredMixin, UpdateView):
 class ArtDeleteView(DeleteView):
     model = Articles
     template_name = 'articles/Art_delete.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('articulos:all_articles')
 

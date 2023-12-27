@@ -9,7 +9,7 @@
         <select name="category" class="form-select me-2" style="width: 150px;">
             <option value="" selected>Categoría</option>    
             {% for category in categories %}
-                <option value="{{ category.id }}">{{ category.name }}</option>
+                <option value="{{ category.id }}">{{ category.nombre }}</option>
             {% endfor %}
         </select>
         <!-- Filtro por Autor -->

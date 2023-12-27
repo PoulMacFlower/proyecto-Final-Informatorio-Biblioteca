@@ -31,7 +31,7 @@
 <h1 class="my-4 d-flex justify-content-center align-items-center">{{ article.title }}</h1>
 
 <div class="d-flex justify-content-center ">
-  <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid w-75">
+  <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid w-50">
 </div>
 
 {% include "articles/Art_reacction.html" %}
@@ -41,7 +41,7 @@
 
 <!-- Seccion de Botón de "like" | "Dislike" -->
 <div class="my-4">
-  <p class="d-flex justify-content-center align-items-center  card bg-white" style="box-shadow: none; max-width: auto;">{{ article.content }}</p>
+  <p class="d-flex justify-content-center align-items-center  card bg-white" style="box-shadow: none; max-width: auto;">{{ article.content | safe}}</p>
 </div>
 <!-- ############################################################ -->
 
