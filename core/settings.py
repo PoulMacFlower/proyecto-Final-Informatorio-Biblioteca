@@ -37,7 +37,14 @@ INSTALLED_APPS = [
     'apps.usuario',
     'apps.categoria',
     'apps.articulo',
+    'ckeditor',
 ]
+
+CKEDITOR_CONFIGS = {
+'default': {
+    'toolbar':'full',
+}
+}
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"

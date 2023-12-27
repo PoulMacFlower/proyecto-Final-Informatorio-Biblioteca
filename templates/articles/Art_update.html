@@ -10,6 +10,7 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form|crispy}}
+        {{form.media}}
         <div class="d-grid mt-4">
           <button class="btn btn-primary" type="submit">Guardar cambios</button>
         </div>
