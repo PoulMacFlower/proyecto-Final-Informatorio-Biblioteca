@@ -1,0 +1,47 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="accordion accordion-flush bg-transparent" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header text-center fst-italic" id="flush-headingOne">
+      <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="color: navy;">
+        Conoce a los colaboradores detrás de cada artículo
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body fst-italic">
+        ¡Bienvenidos a nuestra comunidad! Queremos presentarles a nuestros apasionados colaboradores detrás de cada artículo con temáticas referentes al medio ambiente.
+        Cada artículo publicado es el resultado de arduo trabajo, investigación y dedicación. <br>
+        Desde expertos en sostenibilidad hasta amantes de la naturaleza, resaltamos la diversidad de mentes creativas en nuestra comunidad. <br>
+        ¡Juntos seguimos inspirándonos y compartiendo conocimientos para cuidar nuestro planeta!
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container text-center">
+    <br>
+    <div class="card mx-auto" style="width: 18rem;">
+        <div class="card-img-top rounded-circle overflow-hidden" style="height: 192px;">
+            <img src="{{ author.image.url }}" alt="{{ author.username }}" class="img-fluid h-100">
+        </div>
+        <div class="card-body-profile">
+            <div class="user-container">
+                <p class="username">{{ author.username }}</p>
+                {% if author.is_colaborador and author.verified == 'verified' %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="rgb(0, 149, 246)" class="x1lliihq x1n2onr6" viewBox="0 0 40 40">
+                    <title>Colaborador</title>
+                    <path d="M19.998 3.094 14.638 0l-2.972 5.15H5.432v6.354L0 14.64 3.094 20 0 25.359l5.432 3.137v5.905h5.975L14.638 40l5.36-3.094L25.358 40l3.232-5.6h6.162v-6.01L40 25.359 36.905 20 40 14.641l-5.248-3.03v-6.46h-6.419L25.358 0l-5.36 3.094Zm7.415 11.225 2.254 2.287-11.43 11.5-6.835-6.93 2.244-2.258 4.587 4.581 9.18-9.18Z" fill-rule="evenodd"></path>
+                </svg>
+                {% endif %}
+            </div>
+            <p class="biography">{{ author.bio }}</p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+

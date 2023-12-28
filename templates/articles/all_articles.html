@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+
+<!-- Formulario de búsqueda -->
+{% include 'articles/Art_form_search.html' %}
+<!-- ############################################################################### -->
+
+<!-- Seccion del listado de articulos -->
+<div class="center-content d-flex justify-content-center align-items-center">
+    <h3 class="fw-bold text-center">Todos los Articulos</h3>
+    <div class="row g-4 justify-content-center"> 
+        {% for article in page %}
+            {% include 'articles/Art_card.html' %}
+        {% endfor %}
+    </div>
+</div> 
+<!-- ############################################################################### -->
+
+
+<!-- Paginacion para los articulos -->
+{% include 'articles/Art_pagination.html' %}
+
+<!-- ############################################################################### -->
+
+{% endblock %}

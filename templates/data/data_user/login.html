@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card h-70 bg-dark text-white card-project">
+        <div class="card-body text-center">
+            <form action="" method="POST">
+                <h1 class="mt-5">Iniciar Sesión</h1>
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{next}}">
+                {{form|crispy}}
+                <div class="d-grid gap-2 mt-4">
+                    <button class="btn btn-success" type="submit">Iniciar sesion</button>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <a class="btn btn-secondary" href="{% url 'usuarios:signup_user' %}?next={{next}}">Crear nueva cuenta</a>
+                </div>
+                <div class="d-grid gap-2 mt-4">
+                    <a class="btn btn-warning" href="{% url 'usuarios:password_reset' %}">¿Olvidaste tu contraseña?</a>
+                </div>
+            </form>
+        </div>
+    </div>       
+</main>
+{% endblock  %}
