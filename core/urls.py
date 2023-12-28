@@ -10,6 +10,7 @@ urlpatterns = [
     path('accounts/', include('apps.usuario.urls')),
     path('categorias/', include('apps.categoria.urls')),
     path('articulos/', include('apps.articulo.urls')),
+    path('comentarios/', include('apps.comentarios.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

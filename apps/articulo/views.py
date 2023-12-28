@@ -7,6 +7,8 @@ from apps.categoria.forms import CategoryForm
 from .models import Articles
 from apps.categoria.models import Categoria
 from django.urls import reverse_lazy
+from apps.comentarios.models import Comment
+from apps.comentarios.forms import CommentForm
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -119,40 +121,40 @@ class ArtCreateView(LoginRequiredMixin, UserPassesTestMixin, View):
 class ArtDetailView(View):
     def get(self, request, post_id, *args, **kwargs):
         article = get_object_or_404(Articles, pk=post_id)
-        # comments = Comment.objects.filter(article=article).order_by('-id')
-        # form = CommentForm()
+        comments = Comment.objects.filter(article=article).order_by('-id')
+        form = CommentForm()
 
         context = {
             'article': article,
-            # 'comments': comments,
-            # 'form': form,
+            'comments': comments,
+            'form': form,
         }
         return render(request, 'articles/Art_detail.html', context)
 
     def post(self, request, post_id, *args, **kwargs):
         article = get_object_or_404(Articles, pk=post_id)
-        # comments = Comment.objects.filter(article=article)
-        form = (request.POST)
+        comments = Comment.objects.filter(article=article)
+        form = CommentForm(request.POST)
 
         if form.is_valid():
             content = form.cleaned_data['content']
             author = request.user
-            # Comment.objects.create(article=article, author=author, content=content)
+            Comment.objects.create(article=article, author=author, content=content)
             return redirect('articulos:detail_article', post_id=post_id)
 
  
         context = {
             'article': article,
-            # 'comments': comments,
+            'comments': comments,
             'form': form,
         }
         return render(request, 'articles/Art_detail.html', context)
     
-    # def delete(self, request, comment_id, *args, **kwargs):
-    #     comment = get_object_or_404(Comment, pk=comment_id).order_by('-id')
-    #     post_id = comment.article.pk  
-    #     comment.delete()
-    #     return redirect('articulos:detail_article', post_id=post_id)    
+    def delete(self, request, comment_id, *args, **kwargs):
+        comment = get_object_or_404(Comment, pk=comment_id).order_by('-id')
+        post_id = comment.article.pk  
+        comment.delete()
+        return redirect('articulos:detail_article', post_id=post_id)    
 
 
 # para ACTUALIZAR un artículo / colaborador
