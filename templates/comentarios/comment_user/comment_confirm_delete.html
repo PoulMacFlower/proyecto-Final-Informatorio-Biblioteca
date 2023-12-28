@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="col-md-6">
+    <h1 class="mb-4 text-center fs-6">¿Estás seguro de que deseas eliminar el comentario?</h1>
+    <h2 class="text-center">{{ object.content }}</h2>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{form|crispy}}
+      <div class="d-grid mt-4">
+        <button class="btn btn-danger" type="submit">Eliminar</button>
+      </div>
+      <div class="d-grid mt-4">
+        <a href="{% url 'articulos:detail_article' post_id=object.article.id %}" class="btn btn-secondary">Cancelar</a>
+      </div>
+    </form>
+  </div>
+</main>
+{% endblock %}
