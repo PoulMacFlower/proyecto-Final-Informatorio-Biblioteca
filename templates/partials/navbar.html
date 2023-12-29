@@ -15,7 +15,7 @@
                     <a class="nav-link active underline-hover" href="#">Acerca de</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active underline-hover" href="#">Contacto</a>
+                    <a class="nav-link active underline-hover" href="{% url 'contacts:contact'%}">Contacto</a>
                 </li>
                 {% if user.is_authenticated %}
                 <!-- Menú desplegable "Mi Perfil" -->
