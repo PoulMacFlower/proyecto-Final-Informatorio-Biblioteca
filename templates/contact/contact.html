@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+
+<div class="accordion accordion-flush bg-transparent" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header text-center fst-italic" id="flush-headingOne">
+        <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="color: navy;">
+        <b>Comunidad</b>
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body fst-italic">
+            ¡Nos encantaría escucharte! En nuestra sección de contacto nos gustaría saber de usted.
+            Comparta sus pensamientos sobre el medio ambiente, pregunte sus inquietudes y obtenga consejos sobre cómo mejorarlo.
+            Estamos aquí para usted porque juntos podemos hacer la diferencia.
+            <b> ¡Únete a nuestra comunidad dedicada a proteger el medio ambiente! </b>
+        </div>
+      </div>
+    </div>
+</div>
+
+{% load crispy_forms_tags %}
+<main class="container">
+    <h1 class="m-4 text-center">Contáctanos</h1>
+    <div class="row justify-content-center">
+        <div class="card h-100 bg-dark text-white card-project ">
+            <form action="" method="POST" class="shadow p-4 rounded">
+                {% csrf_token %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'success' %}
+                            <div class="alert alert-success alert-custom-success" role="alert">
+                                <p>{{ message }}</p>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {{form|crispy}}
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<script src="{% static 'js/timeMessageUpdateArt.js' %}"></script>
+
+{% endblock %}
+
