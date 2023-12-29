@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'apps.articulo',
     'apps.comentarios',
     'apps.contacto',
+    'apps.acercaDe',
     'ckeditor',
 ]
 
