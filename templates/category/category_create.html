@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+<!-- Seccion para crear categorias -->
+{% block content %}
+{% if user.is_authenticated and user.is_colaborador %}
+    <div class="container">
+        <h1  class=" mb-4 text-center fs-6 text-decoration-underline">Crear Categoría</h1>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form|crispy}}
+                        <div class="d-grid mt-4">
+                            <button type="submit" class="btn btn-success">Guardar Categoría</button>
+                        </div>
+                        <div class="d-grid mt-4">
+                            <a href="{% url 'home'%}" class="btn btn-secondary">Cancelar</a>
+                        </div>  
+                    </form>
+                    {% else %}
+                    <p>Esta página solo está disponible para colaboradores. Por favor, inicia sesión o regístrate como colaborador.</p>
+                    <p><a href="{% url 'usuarios:login_user' %}">Iniciar sesión</a> | <a href="{% url 'usuarios:signup_user' %}">Registrarse</a></p>
+                    {% endif %}
+                </div>  
+            </div>    
+    </div>  
+
+<!-- ################################################################# --> 
+
+<!-- Lista de todas las categorias -->
+{% include 'category/category_list.html' %}
+<!-- ################################################################# --> 
+
+<!-- Seccion de paginacion de categorias -->
+{% include 'category/category_pagination.html' %}
+<!-- ############################################################ -->
+</div>
+{% endblock %}
+
+

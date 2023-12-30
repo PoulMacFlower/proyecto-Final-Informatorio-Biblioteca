@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="container">
+  <h1 class="mb-4 text-center">Editar comentario</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="POST" class="shadow p-4 rounded">
+          {% csrf_token %}
+          {{form|crispy}}
+          <div class="d-grid mt-4">
+            <button class="btn btn-primary" type="submit">Guardar cambios</button>
+          </div>
+          <div class="d-grid mt-4">
+            <a href="{% url 'articulos:detail_article' post_id=object.article.id %}" class="btn btn-secondary">Cancelar</a>
+          </div>
+        </form>
+      </div>
+    </div>
+</main>        
+{% endblock %}

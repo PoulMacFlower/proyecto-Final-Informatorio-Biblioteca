@@ -1,0 +1,28 @@
+{% comment %} {% if user.is_authenticated %}
+<div class="container text-center mt-4">
+    <div class="btn-group" role="group" aria-label="Reacciones">
+        <div class="d-flex justify-content-center">    
+            <!-- Botón de "like" -->
+            <form method="post" action="{% url 'articulos:like' article.pk %}" class="form-inline justify-content-center">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" class="btn btn-primary mx-2">
+                        <i class="bi bi-hand-thumbs-up"></i>
+                    </button>
+                    <!-- Contador de likes -->
+                    <span class="badge bg-primary">{{ article.likes.count }}</span>
+            </form>
+
+            <!-- Botón de "dislike" -->
+            <form method="post" action="{% url 'articulos:dislike' article.pk %}" class="form-inline justify-content-center">
+                {% csrf_token %}
+                <input type="hidden" name="next" value="{{ request.path }}">
+                    <button type="submit" class="btn btn-danger mx-2">
+                        <i class="bi bi-hand-thumbs-down"></i>
+                    <!-- Contador de dislikes -->
+                    <span class="badge bg-danger">{{ article.dislikes.count }}</span>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %} {% endcomment %}

@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<main class="container d-flex justify-content-center align-items-center ">
+    <div class="card">
+        <form action="" method="POST">
+            <h1 class="mt-5">Registro</h1>
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{next}}">
+            {{form|crispy}}
+            <div class="d-grid gap-2 mt-4">
+                <button class="btn btn-success" type="submit">Registrarse</button>
+            </div>
+            <div class="d-grid gap-2 mt-4">
+                <a class="btn btn-secondary" href="{% url 'usuarios:login_user' %}?next={{next}}">Iniciar sesion</a>
+            </div>
+        </form>
+    </div> 
+</main>
+{% endblock  %}

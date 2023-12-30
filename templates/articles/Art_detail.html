@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<!-- Mesaje de actualizacion de un articulo -->
+{% if messages %}
+  {% for message in messages %}
+    {% if message.tags == 'success' %}
+      <div class="alert alert-success alert-custom-success" role="alert" id="success-alert">
+        <h4 class="alert-heading">¡Bien hecho!</h4>
+        <p>{{ message }}</p>
+        <hr>
+        <p class="mb-0">¡Excelente trabajo!</p>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<script src="{% static 'js/timeMessageUpdateArt.js' %}"></script>
+<!-- ############################################################ -->
+
+<!-- Seccion de vista del contenido de un articulo -->
+<p class="my-2 ps-5">
+  <span class="text-muted">Author:</span> <a href="{% url 'usuarios:author_detail' article.author.id %}" class="text-muted" style="p-0">{{ article.author.username }}</a>
+  <span class="text-muted">|</span> {{ article.date_published }}
+  <span class="text-muted">|</span> {{ article.category }}
+</p>
+
+<h1 class="my-4 d-flex justify-content-center align-items-center">{{ article.title }}</h1>
+
+<div class="d-flex justify-content-center ">
+  <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid w-50">
+</div>
+
+{% include "articles/Art_reacction.html" %}
+
+<!-- ############################################################ -->
+
+
+<!-- Seccion de Botón de "like" | "Dislike" -->
+<div class="my-4">
+  <p class="d-flex justify-content-center align-items-center  card bg-white" style="box-shadow: none; max-width: auto;">{{ article.content | safe}}</p>
+</div>
+<!-- ############################################################ -->
+
+<!-- Seccion de comentar un articulo -->
+{% include 'articles/Art_comment.html' %}
+<!-- ############################################################ -->
+
+{% endblock %} 
