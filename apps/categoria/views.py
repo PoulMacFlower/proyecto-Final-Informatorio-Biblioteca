@@ -1,15 +1,12 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import  render, redirect
 from django.db.models import Count
-from django.contrib import messages
-from django.views.generic import View, UpdateView, DeleteView
+from django.views.generic import View, DeleteView
 from .forms import CategoryForm
-from apps.articulo.forms import ArticleForm
 from .models import Categoria
 from apps.articulo.models import Articles
 from django.urls import reverse_lazy
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.http import HttpResponseRedirect
 from apps.usuario.models import User
 
 
