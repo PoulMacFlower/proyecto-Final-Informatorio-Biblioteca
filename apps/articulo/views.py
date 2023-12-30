@@ -1,19 +1,14 @@
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import get_object_or_404, render, redirect
-from django.db.models import Count
-from django.contrib import messages
 from django.views.generic import View, UpdateView, DeleteView
+from django.contrib import messages
 from .forms import ArticleForm
-from apps.categoria.forms import CategoryForm
 from .models import Articles
 from apps.categoria.models import Categoria
 from django.urls import reverse_lazy
 from apps.comentarios.models import Comment
 from apps.comentarios.forms import CommentForm
-
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
-from django.http import HttpResponseRedirect
 from apps.usuario.models import User
 
 
